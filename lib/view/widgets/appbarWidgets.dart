@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../screen/about/about_istadScreen.dart';
+import 'package:lms_mobile/view/screen/academic/myHomeAcademicScreen.dart';
+import '../screen/about/myHomeAboutIstadScreen.dart';
+import '../screen/homeScreen/myHomeScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +14,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Common layout widget
 class CommonLayout extends StatelessWidget {
   final String title;
   final Widget body;
@@ -44,12 +44,16 @@ class CommonLayout extends StatelessWidget {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+            icon: Icon(Icons.school),
+            label: 'Academic',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.info),
+            label: 'About',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            label: 'LMS',
           ),
         ],
       ),
@@ -57,7 +61,6 @@ class CommonLayout extends StatelessWidget {
   }
 }
 
-// Main layout with navigation
 class MainLayout extends StatefulWidget {
   @override
   _MainLayoutState createState() => _MainLayoutState();
@@ -69,15 +72,19 @@ class _MainLayoutState extends State<MainLayout> {
   final List<Map<String, dynamic>> _pages = [
     {
       'title': 'Home',
-      'page': HomePage(),
+      'page': MyHomescreen(),
     },
     {
-      'title': 'Profile',
+      'title': 'Academic',
+      'page': MyAcademicScreen(),
+    },
+    {
+      'title': 'About',
       'page': AboutIstadscreen(),
     },
     {
-      'title': 'Settings',
-      'page': SettingsPage(),
+      'title': 'LMS',
+      'page': MyAcademicScreen(),
     },
   ];
 
@@ -94,34 +101,6 @@ class _MainLayoutState extends State<MainLayout> {
       body: _pages[_selectedIndex]['page'] as Widget,
       currentIndex: _selectedIndex,
       onTabTapped: _onItemTapped,
-    );
-  }
-}
-
-// Pages
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Home Page Content'),
-    );
-  }
-}
-
-class ProfilePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Profile Page Content'),
-    );
-  }
-}
-
-class SettingsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Settings Page Content'),
     );
   }
 }
