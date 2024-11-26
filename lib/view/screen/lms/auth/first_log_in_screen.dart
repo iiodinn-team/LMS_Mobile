@@ -3,17 +3,19 @@ import 'package:flutter/material.dart';
 import '../../../widgets/color/colorScreen.dart';
 
 void main() {
-  runApp(const MaterialApp(home: SignInScreen()));
+  runApp(const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: firstSignInScreen()));
 }
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({Key? key}) : super(key: key);
+class firstSignInScreen extends StatefulWidget {
+  const firstSignInScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<firstSignInScreen> createState() => _SignInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignInScreenState extends State<firstSignInScreen> {
   bool _obscurePassword = true;
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
@@ -119,12 +121,13 @@ class _SignInScreenState extends State<SignInScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_ios, color: AppColors.defaultGrayColor),
           onPressed: () => Navigator.pop(context),
+          padding: EdgeInsets.zero,
         ),
         title: const Text(
           'Sign In with your account',
-          style: TextStyle(color: AppColors.primaryColor, fontSize: 16),
+          style: TextStyle(color: AppColors.primaryColor, fontSize: 18),
         ),
       ),
       body: SingleChildScrollView(
@@ -140,7 +143,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF1F2937),
+                  color: AppColors.primaryColor,
                 ),
               ),
               const SizedBox(height: 40),
@@ -155,8 +158,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   const Text(
                     'Email',
                     style: TextStyle(
-                      color: Color(0xFF1F2937),
-                      fontWeight: FontWeight.w500,
+                      color: AppColors.primaryColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -165,14 +169,21 @@ class _SignInScreenState extends State<SignInScreen> {
                     validator: _validateEmail,
                     decoration: InputDecoration(
                       hintText: 'Enter your email or Username',
+                      hintStyle: const TextStyle(
+                        color: AppColors.defaultGrayColor
+                      ),
                       errorText: _emailError,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(color: Colors.grey),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(10),
                         borderSide: const BorderSide(color: Colors.grey),
+                      ),
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: AppColors.primaryColor), // Border color when focused
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
                     ),
                   ),
@@ -185,8 +196,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   const Text(
                     'Password',
                     style: TextStyle(
-                      color: Color(0xFF1F2937),
-                      fontWeight: FontWeight.w500,
+                      color: AppColors.primaryColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -196,6 +208,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     obscureText: _obscurePassword,
                     decoration: InputDecoration(
                       hintText: 'Enter your password',
+                      hintStyle: const TextStyle(
+                          color: AppColors.defaultGrayColor
+                      ),
                       errorText: _passwordError,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -204,6 +219,10 @@ class _SignInScreenState extends State<SignInScreen> {
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8),
                         borderSide: const BorderSide(color: Colors.grey),
+                      ),
+                      focusedBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(color: AppColors.primaryColor), // Border color when focused
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
                       ),
                       suffixIcon: IconButton(
                         icon: Icon(
@@ -230,13 +249,13 @@ class _SignInScreenState extends State<SignInScreen> {
                   child: const Text(
                     'First time Sign In?',
                     style: TextStyle(
-                      color: Colors.blue,
+                      color: AppColors.primaryColor,
                       decoration: TextDecoration.underline,
+                      decorationColor: AppColors.primaryColor,
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 16),
               ElevatedButton(
                 onPressed: _isLoading ? null : _handleSignIn,
                 style: ElevatedButton.styleFrom(
@@ -259,7 +278,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   'Sign In',
                   style: TextStyle(
                     color: AppColors.defaultWhitColor,
-                    fontSize: 16,
+                    fontSize: 18,
                     fontWeight: FontWeight.w500,
                   ),
                 ),

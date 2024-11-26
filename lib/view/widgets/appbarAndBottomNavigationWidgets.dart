@@ -148,7 +148,7 @@ class _MainLayoutState extends State<MainLayout> {
     },
     {
       'title': 'LMS',
-      'page': SignInScreen(),
+      'page': firstSignInScreen(),
     },
   ];
 
