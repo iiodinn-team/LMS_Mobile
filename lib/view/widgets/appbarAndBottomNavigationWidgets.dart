@@ -5,6 +5,7 @@ import '../screen/about/myHomeAboutIstadScreen.dart';
 import '../screen/academic/myHomeAcademicScreen.dart';
 import '../screen/homeScreen/myHomeScreen.dart';
 import '../screen/lms/auth/first_log_in_screen.dart';
+import 'aboutTapbarNavigationWidget.dart';
 
 class CommonLayout extends StatelessWidget {
   final String title;
@@ -143,7 +144,7 @@ class _MainLayoutState extends State<MainLayout> {
     },
     {
       'title': 'About',
-      'page': AboutIstadscreen(),
+      'page': AboutTapbarNavigation(),
     },
     {
       'title': 'LMS',
