@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lms_mobile/view/widgets/color/colorScreen.dart';
+
+import '../screen/about/myHomeAboutIstadScreen.dart';
+import '../screen/academic/myHomeAcademicScreen.dart';
+import '../screen/homeScreen/myHomeScreen.dart';
+import '../screen/lms/auth/first_log_in_screen.dart';
+
 class CommonLayout extends StatelessWidget {
   final String title;
   final Widget body;
@@ -19,8 +25,8 @@ class CommonLayout extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
-        title: Image.network(
-          'https://www.cstad.edu.kh/_next/image?url=%2Fschool-logo%2Flogo-white-version.png&w=128&q=75',
+        title: Image.asset(
+          'assets/images/logo.png',
           height: 40,
           fit: BoxFit.contain,
         ),
@@ -35,21 +41,22 @@ class CommonLayout extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
+                minimumSize: Size(120, 33),
               ),
               child: const Row(
-                mainAxisSize: MainAxisSize.min, // To make the button size adjust based on content
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Icon(
-                    Icons.note_add, // Icon inside the button
-                    color: Colors.white, // Icon color
-                    size: 18.0, // Icon size
+                    Icons.note_alt_outlined,
+                    color: Colors.white,
+                    size: 18.0,
                   ),
-                  SizedBox(width: 8.0), // Space between icon and text
+                  SizedBox(width: 8.0),
                   Text(
-                    'ADMISSION FORM', // Button text
+                    'ADMISSION FORM',
                     style: TextStyle(
-                      color: Colors.white, // Text color
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 13,
                     ),
@@ -68,10 +75,6 @@ class CommonLayout extends StatelessWidget {
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: AppColors.primaryColor,
-          // borderRadius: const BorderRadius.only(
-          //   topLeft: Radius.circular(20),
-          //   topRight: Radius.circular(20),
-          // ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.1),
@@ -128,22 +131,23 @@ class MainLayout extends StatefulWidget {
 class _MainLayoutState extends State<MainLayout> {
   int _selectedIndex = 0;
 
+  // List of pages for each tab
   final List<Map<String, dynamic>> _pages = [
     {
       'title': 'Home',
-      'page': const Center(child: Text('Home Page')),
+      'page': MyHomescreen(),
     },
     {
       'title': 'Academic',
-      'page': const Center(child: Text('Academic Page')),
+      'page': MyAcademicScreen(),
     },
     {
       'title': 'About',
-      'page': const Center(child: Text('About Page')),
+      'page': AboutIstadscreen(),
     },
     {
       'title': 'LMS',
-      'page': const Center(child: Text('LMS Page')),
+      'page': SignInScreen(),
     },
   ];
 
