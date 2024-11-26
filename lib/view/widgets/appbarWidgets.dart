@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../screen/about/about_istadScreen.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -71,7 +73,7 @@ class _MainLayoutState extends State<MainLayout> {
     },
     {
       'title': 'Profile',
-      'page': ProfilePage(),
+      'page': AboutIstadscreen(),
     },
     {
       'title': 'Settings',
