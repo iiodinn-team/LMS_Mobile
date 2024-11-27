@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class HomeIstadScreen extends StatefulWidget {
@@ -25,22 +27,24 @@ class _HomePageState extends State<HomeIstadScreen> {
                     'Vision',
                     'Advanced IT Institute in Cambodia',
                     'Learn More',
-                    'assets/images/about_is'
-                        'tad_img.png',
+                    'assets/images/about_istad_img.png',
+                    false, // Not reversed
                   ),
                   const SizedBox(height: 16),
                   _buildFeatureCard(
                     'Mission',
                     'Provide the latest methodology with high-quality',
                     'Get Started',
-                    'assets/mission_bg.jpg',
+                    'assets/images/about_istad_img1.png',
+                    true, // Reversed
                   ),
                   const SizedBox(height: 16),
                   _buildFeatureCard(
                     'Institute of Science and Technology Advanced Development',
                     '',
                     'Enroll Now',
-                    'assets/institute_bg.jpg',
+                    'assets/images/about_istad_img2.png',
+                    false, // Not reversed
                   ),
                 ],
               ),
@@ -73,7 +77,8 @@ class _HomePageState extends State<HomeIstadScreen> {
                   ),
                   _buildInfoSection('VISION & MISSION', ''),
                   _buildInfoSection('OUR VISION', 'Advanced IT Institute in Cambodia'),
-                  _buildMissionList(),
+                  _buildInfoSection('OUR MISSION', ''),
+                  _buildMissionList('OUR MISSION',''),
                   _buildContactSection(),
                 ],
               ),
@@ -84,64 +89,86 @@ class _HomePageState extends State<HomeIstadScreen> {
     );
   }
 
-  Widget _buildFeatureCard(String title, String subtitle, String buttonText, String backgroundImage) {
+  Widget _buildFeatureCard(String title, String subtitle, String buttonText,
+      String backgroundImage, bool isReversed) {
     return Container(
-      width: double.infinity, // Makes the width span the full parent container
+      width: double.infinity,
       height: 180,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.25), // Shadow color
-            blurRadius: 8, // Spread of the blur
-            offset: Offset(4, 4), // Offset for shadow (x, y)
-          ),
-        ],
-        image: DecorationImage(
-          image: AssetImage(backgroundImage),
-          fit: BoxFit.cover,
-        ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+      child: Stack(
+        children: [
+          // Positioned image with blur effect
+          Positioned.fill(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(
+                backgroundImage,
+                fit: BoxFit.cover,
               ),
             ),
-            if (subtitle.isNotEmpty)
-              Text(
-                subtitle,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
+          ),
+          // Apply blur effect to the image
+          Positioned.fill(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
+                child: Container(
+                  color: Colors.black.withOpacity(0),
                 ),
               ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: buttonText == 'Get Started' ? Colors.red : Colors.blue,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+          // Content on top of the blurred image (text and button)
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                child: Text(buttonText),
-              ),
+                if (subtitle.isNotEmpty)
+                  Text(
+                    subtitle,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                Container(
+                  padding: const EdgeInsets.all(0),
+                  alignment: Alignment.centerRight,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor:
+                      isReversed ? Colors.blue : Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 8),
+                    ),
+                    child: Text(buttonText),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
+
 
 
 
@@ -171,7 +198,7 @@ class _HomePageState extends State<HomeIstadScreen> {
     );
   }
 
-  Widget _buildMissionList() {
+  Widget _buildMissionList(String title, String content) {
     return Padding(
       padding: const EdgeInsets.only(left: 32),
       child: Column(
@@ -191,26 +218,27 @@ class _HomePageState extends State<HomeIstadScreen> {
       children: [
         const Text(
           'If you have any questions, please feel free to contact us.',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         const SizedBox(height: 16),
         _buildContactItem(Icons.location_on, 'No. 12, St. 323, Sangkat Boeung Kak II, Khan Toul Kork, Phnom Penh, Cambodia'),
         _buildContactItem(Icons.facebook, 'Facebook'),
         _buildContactItem(Icons.telegram, 'Telegram'),
         _buildContactItem(Icons.email, 'info.istad@gmail.com'),
-        _buildContactItem(Icons.youtube_searched_for, 'YouTube'),
+        _buildContactItem(Icons.video_collection, 'YouTube'),
         _buildContactItem(Icons.phone, '(+855) 95 990 910 | (+855) 93 990 910'),
-        _buildContactItem(Icons.web, 'www.istad.edu.kh'),
+        _buildContactItem(Icons.wordpress, 'www.istad.edu.kh'),
       ],
     );
   }
+
 
   Widget _buildContactItem(IconData icon, String text) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: Row(
         children: [
-          Icon(icon, size: 20),
+          Icon(icon, size: 26),
           const SizedBox(width: 8),
           Expanded(child: Text(text)),
         ],

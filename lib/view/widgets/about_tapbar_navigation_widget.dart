@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../screen/about/about_my_directorScreen.dart';
 import '../screen/about/about_our_teamScreen.dart';
 import '../screen/about/my_home_about_istad_screen.dart';
@@ -30,8 +29,11 @@ class _TabNavigationScreenState extends State<AboutTapbarNavigation> with Single
       body: Column(
         children: [
           TabBar(
-            padding: EdgeInsets.all(0.0),
             controller: _tabController,
+            indicator: null,
+            isScrollable: false,
+            padding: EdgeInsets.zero,
+            // indicator: BoxDecoration(),
             tabs: const [
               Tab(text: 'About ISTAD'),
               Tab(text: 'My Director'),

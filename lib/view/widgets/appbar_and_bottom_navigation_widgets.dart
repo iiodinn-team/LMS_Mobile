@@ -67,8 +67,7 @@ class CommonLayout extends StatelessWidget {
         ],
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: Container(
         child: body,
       ),
       bottomNavigationBar: Container(
