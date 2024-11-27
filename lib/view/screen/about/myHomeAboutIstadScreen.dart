@@ -25,7 +25,8 @@ class _HomePageState extends State<HomeIstadScreen> {
                     'Vision',
                     'Advanced IT Institute in Cambodia',
                     'Learn More',
-                    'assets/images/about_istad_img.png',
+                    'assets/images/about_is'
+                        'tad_img.png',
                   ),
                   const SizedBox(height: 16),
                   _buildFeatureCard(
@@ -85,9 +86,17 @@ class _HomePageState extends State<HomeIstadScreen> {
 
   Widget _buildFeatureCard(String title, String subtitle, String buttonText, String backgroundImage) {
     return Container(
+      width: double.infinity, // Makes the width span the full parent container
       height: 180,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.25), // Shadow color
+            blurRadius: 8, // Spread of the blur
+            offset: Offset(4, 4), // Offset for shadow (x, y)
+          ),
+        ],
         image: DecorationImage(
           image: AssetImage(backgroundImage),
           fit: BoxFit.cover,
@@ -133,6 +142,7 @@ class _HomePageState extends State<HomeIstadScreen> {
       ),
     );
   }
+
 
 
   Widget _buildInfoSection(String title, String content) {
