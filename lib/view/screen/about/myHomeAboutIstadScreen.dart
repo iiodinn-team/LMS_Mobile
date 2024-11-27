@@ -25,7 +25,7 @@ class _HomePageState extends State<HomeIstadScreen> {
                     'Vision',
                     'Advanced IT Institute in Cambodia',
                     'Learn More',
-                    'assets/vision_bg.jpg',
+                    'assets/images/about_istad_img.png',
                   ),
                   const SizedBox(height: 16),
                   _buildFeatureCard(
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomeIstadScreen> {
 
   Widget _buildFeatureCard(String title, String subtitle, String buttonText, String backgroundImage) {
     return Container(
-      height: 150,
+      height: 180,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         image: DecorationImage(
@@ -93,57 +93,47 @@ class _HomePageState extends State<HomeIstadScreen> {
           fit: BoxFit.cover,
         ),
       ),
-      child: Stack(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              gradient: LinearGradient(
-                colors: [Colors.black.withOpacity(0.7), Colors.transparent],
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  title,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
+            if (subtitle.isNotEmpty)
+              Text(
+                subtitle,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: buttonText == 'Get Started' ? Colors.red : Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                if (subtitle.isNotEmpty)
-                  Text(
-                    subtitle,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: buttonText == 'Get Started' ? Colors.red : Colors.blue,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  child: Text(buttonText),
-                ),
-              ],
+                child: Text(buttonText),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
+
 
   Widget _buildInfoSection(String title, String content) {
     return Column(

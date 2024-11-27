@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms_mobile/view/widgets/color/colorScreen.dart';
-
-import '../screen/about/myHomeAboutIstadScreen.dart';
+import 'package:lms_mobile/data/color/colorScreen.dart';
 import '../screen/academic/myHomeAcademicScreen.dart';
 import '../screen/homeScreen/myHomeScreen.dart';
 import '../screen/lms/auth/first_log_in_screen.dart';

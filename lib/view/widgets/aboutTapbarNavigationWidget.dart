@@ -15,7 +15,7 @@ class _TabNavigationScreenState extends State<AboutTapbarNavigation> with Single
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this); // 3 tabs in this example
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -30,6 +30,7 @@ class _TabNavigationScreenState extends State<AboutTapbarNavigation> with Single
       body: Column(
         children: [
           TabBar(
+            padding: EdgeInsets.all(0.0),
             controller: _tabController,
             tabs: const [
               Tab(text: 'About ISTAD'),
