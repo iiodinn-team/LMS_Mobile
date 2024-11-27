@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lms_mobile/data/color/colorScreen.dart';
-import '../screen/academic/myHomeAcademicScreen.dart';
-import '../screen/homeScreen/myHomeScreen.dart';
+import 'package:lms_mobile/data/color/color_screen.dart';
+import '../screen/academic/my_home_academic_screen.dart';
+import '../screen/homeScreen/my_home_screen.dart';
 import '../screen/lms/auth/first_log_in_screen.dart';
-import 'aboutTapbarNavigationWidget.dart';
+import 'about_tapbar_navigation_widget.dart';
 
 class CommonLayout extends StatelessWidget {
   final String title;
