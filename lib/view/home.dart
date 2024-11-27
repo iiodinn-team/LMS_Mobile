@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lms_mobile/view/widgets/appbarAndBottomNavigationWidgets.dart';
+import 'package:lms_mobile/view/widgets/appbar_and_bottom_navigation_widgets.dart';
 
 void main() {
 
