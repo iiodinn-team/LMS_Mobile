@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:lms_mobile/data/color/color_screen.dart';
-import '../screen/academic/my_home_academic_screen.dart';
-import '../screen/homeScreen/my_home_screen.dart';
-import '../screen/lms/auth/first_log_in_screen.dart';
-import 'about_tapbar_navigation_widget.dart';
 
-class CommonLayout extends StatelessWidget {
+import '../../data/color/color_screen.dart';
+
+class AppLayout extends StatelessWidget {
   final String title;
   final Widget body;
   final int currentIndex;
   final ValueChanged<int> onTabTapped;
 
-  const CommonLayout({
+  const AppLayout({
     Key? key,
     required this.title,
     required this.body,
@@ -22,147 +19,135 @@ class CommonLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
-        title: Image.asset(
-          'assets/images/logo.png',
-          height: 40,
-          fit: BoxFit.contain,
-        ),
-        actions: [
-          // Input button with background
+      appBar: _buildAppBar(),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: body,
+      ),
+      bottomNavigationBar: _buildBottomNavigationBar(),
+    );
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      backgroundColor: AppColors.primaryColor,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
           Padding(
-            padding: const EdgeInsets.all(10),
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.secondaryColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
-                minimumSize: Size(120, 33),
-              ),
-              child: const Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.note_alt_outlined,
-                    color: Colors.white,
-                    size: 18.0,
-                  ),
-                  SizedBox(width: 8.0),
-                  Text(
-                    'ADMISSION FORM',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
-                    ),
-                  ),
-                ],
-              ),
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Image.network(
+              'https://www.cstad.edu.kh/_next/image?url=%2Fschool-logo%2Flogo-white-version.png&w=256&q=75',
+              height: 30,
+              width: 100,
+              fit: BoxFit.cover,
+            ),
+          ),
+          _buildAdmissionButton(),
+        ],
+      ),
+    );
+  }
+
+  ElevatedButton _buildAdmissionButton() {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.secondaryColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        minimumSize: const Size(120, 33),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.network(
+            'https://cdn-icons-png.flaticon.com/128/684/684872.png',
+            width: 18,
+            height: 18,
+            color: Colors.white,
+            fit: BoxFit.cover,
+          ),
+          const SizedBox(width: 4),
+          const Text(
+            'ADMISSION',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
             ),
           ),
         ],
       ),
-
-      body: Container(
-        child: body,
-      ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          color: AppColors.primaryColor,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              spreadRadius: 3,
-              blurRadius: 5,
-            ),
-          ],
-        ),
-        child: BottomNavigationBar(
-          currentIndex: currentIndex,
-          onTap: onTabTapped,
-          // backgroundColor: Colors.transparent,
-          backgroundColor: AppColors.primaryColor,
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white70,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          selectedLabelStyle: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.bold,
-          ),
-          unselectedLabelStyle: const TextStyle(
-            fontSize: 12,
-          ),
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.school),
-              label: 'Academic',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.info),
-              label: 'About',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.library_books),
-              label: 'LMS',
-            ),
-          ],
-        ),
-      ),
     );
   }
-}
 
-class MainLayout extends StatefulWidget {
-  @override
-  _MainLayoutState createState() => _MainLayoutState();
-}
-
-class _MainLayoutState extends State<MainLayout> {
-  int _selectedIndex = 0;
-
-  // List of pages for each tab
-  final List<Map<String, dynamic>> _pages = [
-    {
-      'title': 'Home',
-      'page': MyHomescreen(),
-    },
-    {
-      'title': 'Academic',
-      'page': MyAcademicScreen(),
-    },
-    {
-      'title': 'About',
-      'page': AboutTapbarNavigation(),
-    },
-    {
-      'title': 'LMS',
-      'page': firstSignInScreen(),
-    },
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  BottomNavigationBar _buildBottomNavigationBar() {
+    return BottomNavigationBar(
+      currentIndex: currentIndex,
+      onTap: onTabTapped,
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: AppColors.primaryColor,
+      unselectedItemColor: AppColors.defaultGrayColor,
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
+      selectedLabelStyle: const TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w700,
+      ),
+      unselectedLabelStyle: const TextStyle(
+        fontSize: 14,
+      ),
+      items: _bottomNavItems(),
+    );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return CommonLayout(
-      title: _pages[_selectedIndex]['title'] as String,
-      body: _pages[_selectedIndex]['page'] as Widget,
-      currentIndex: _selectedIndex,
-      onTabTapped: _onItemTapped,
+  List<BottomNavigationBarItem> _bottomNavItems() {
+    return [
+      _buildBottomNavItem(
+        'https://cdn-icons-png.flaticon.com/128/1828/1828864.png',
+        'Home',
+        iconSize: 24,  // Custom size for Home icon
+      ),
+      _buildBottomNavItem(
+        'https://cdn-icons-png.flaticon.com/128/8913/8913919.png',
+        'Academic',
+        iconSize: 30,  // Custom size for Academic icon
+      ),
+      _buildBottomNavItem(
+        'https://cdn-icons-png.flaticon.com/128/17701/17701943.png',
+        'About',
+        iconSize: 28,  // Custom size for About icon
+      ),
+      _buildBottomNavItem(
+        'https://cdn-icons-png.flaticon.com/128/552/552721.png',
+        'LMS',
+        iconSize: 22,  // Custom size for LMS icon
+      ),
+    ];
+  }
+
+  BottomNavigationBarItem _buildBottomNavItem(String imageUrl, String label, {double iconSize = 22.0}) {
+    return BottomNavigationBarItem(
+      icon: _buildNavIcon(imageUrl, AppColors.defaultGrayColor, iconSize),
+      activeIcon: _buildNavIcon(imageUrl, AppColors.primaryColor, iconSize),
+      label: label,
+    );
+  }
+
+  Widget _buildNavIcon(String imageUrl, Color color, double iconSize) {
+    return SizedBox(
+      width: iconSize,
+      height: iconSize,
+      child: ColorFiltered(
+        colorFilter: ColorFilter.mode(color, BlendMode.srcIn),
+        child: Image.network(
+          imageUrl,
+          fit: BoxFit.contain,
+        ),
+      ),
     );
   }
 }
