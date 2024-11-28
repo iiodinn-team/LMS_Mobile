@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../screen/about/about_my_directorScreen.dart';
 import '../screen/about/about_our_teamScreen.dart';
 import '../screen/about/my_home_about_istad_screen.dart';
+import '../screen/academic/my_home_academic_screen.dart';
 
 class AboutTapbarNavigation extends StatefulWidget {
   @override
