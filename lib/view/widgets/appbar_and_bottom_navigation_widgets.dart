@@ -20,10 +20,7 @@ class AppLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: body,
-      ),
+      body: body,
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }

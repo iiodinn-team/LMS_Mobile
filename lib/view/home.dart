@@ -15,23 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Map<String, dynamic>> _pages = [
     {
       'title': 'Home',
-      'page': Stack(
-        children: [
-          // Add VideoBackgroundWidget here
-          // VideoBackgroundWidget(
-          //   videoUrl: 'https://www.vecteezy.com/free-videos/animated-background-mp4',  // Replace with your video URL
-          // ),
-          // Your page content (on top of the video)
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Text('Home Page Content', style: TextStyle(color: Colors.white, fontSize: 20)),
-                // Add more widgets here as needed
-              ],
-            ),
-          ),
-        ],
+      'page': Center(
+        child: VideoBackgroundPage(),
       )
     },
     {
