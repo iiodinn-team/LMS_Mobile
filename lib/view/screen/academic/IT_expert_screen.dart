@@ -1,22 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:lms_mobile/view/screen/about/my_home_about_istad_screen.dart';
+
+import '../../home.dart';
+import '../../widgets/appbar_and_bottom_navigation_widgets.dart';
+import '../lms/auth/first_log_in_screen.dart';
+import 'my_home_academic_screen.dart';
+
+void main() {
+  runApp(MaterialApp(
+    initialRoute: '/',
+    routes: {
+      '/': (context) => ITExpertPage(),
+      '/HomeScreen': (context) => HomeScreen(),
+      '/academic': (context) => MyAcademicScreen(),
+      '/about': (context) => HomeIstadScreen(),
+      '/lms': (context) => firstSignInScreen(),
+    },
+  ));
+}
 
 class ITExpertPage extends StatelessWidget {
   const ITExpertPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppLayout(
+      title: "Associate",
+      currentIndex: 1,
+      onTabTapped: (index) {
+        print("Tapped index: $index");
+        if (index != 1) {
+          Navigator.pushReplacementNamed(context, '/HomeScreen');
+        } else if (index == 1) {
+          Navigator.pushReplacementNamed(context, '/academic');
+        } else if (index == 2) {
+          Navigator.pushReplacementNamed(context, '/about');
+        } else if (index == 3) {
+          Navigator.pushReplacementNamed(context, '/lms');
+        }
+      },
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Image and Scholarship Title Section
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
-                  'assets/images/IT_expert_gen2.png', // Replace with your image path
+                  'assets/images/IT_expert_gen2.png',
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: 200,

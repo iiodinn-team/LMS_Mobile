@@ -19,7 +19,7 @@ class AppLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(),
+      appBar: currentIndex == 3 ? null : _buildAppBar(), // No AppBar for LMS
       body: body,
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
@@ -106,22 +106,22 @@ class AppLayout extends StatelessWidget {
       _buildBottomNavItem(
         'https://cdn-icons-png.flaticon.com/128/1828/1828864.png',
         'Home',
-        iconSize: 24,  // Custom size for Home icon
+        iconSize: 24,
       ),
       _buildBottomNavItem(
         'https://cdn-icons-png.flaticon.com/128/8913/8913919.png',
         'Academic',
-        iconSize: 30,  // Custom size for Academic icon
+        iconSize: 30,
       ),
       _buildBottomNavItem(
         'https://cdn-icons-png.flaticon.com/128/17701/17701943.png',
         'About',
-        iconSize: 28,  // Custom size for About icon
+        iconSize: 28,
       ),
       _buildBottomNavItem(
         'https://cdn-icons-png.flaticon.com/128/552/552721.png',
         'LMS',
-        iconSize: 22,  // Custom size for LMS icon
+        iconSize: 22,
       ),
     ];
   }
