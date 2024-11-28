@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../color/colorScreen.dart';
+import '../../../data/color/color_screen.dart';
+
 
 void main() {
   runApp(const MaterialApp(

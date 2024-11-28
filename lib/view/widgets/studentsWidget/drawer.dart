@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../screen/homeScreen/myHomeScreen.dart';
+import '../../../data/color/color_screen.dart';
+import '../../home.dart';
 import '../../screen/lms/profile/profile_view_screen.dart';
-import '../color/colorScreen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MyHomescreen(), // Replace with your page
+                          builder: (context) => HomeScreen(), // Replace with your page
                         ),
                       );
                     },
