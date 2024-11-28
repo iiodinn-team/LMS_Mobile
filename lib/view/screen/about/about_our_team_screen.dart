@@ -10,7 +10,7 @@ class OurTeamScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.only(top: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -26,12 +26,12 @@ class OurTeamScreen extends StatelessWidget {
                 children: [
                   Image.asset(
                     'assets/images/about_our_team2.png',
-                    width: 150,
+                    width: 160,
                     height: 170,
                   ),
                   Image.asset(
                     'assets/images/about_our_team3.png',
-                    width: 150,
+                    width: 160,
                     height: 170,
                   ),
                 ],

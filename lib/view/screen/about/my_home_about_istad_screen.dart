@@ -21,7 +21,7 @@ class _HomePageState extends State<HomeIstadScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.only(top: 20),
               child: Column(
                 children: [
                   _buildFeatureCard(
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomeIstadScreen> {
                     subtitleColor: Colors.white,
                     buttonColor: AppColors.primaryColor99,
                     buttonTextColor: Colors.white,
-                    cardHeight: 150,
+                    cardHeight: 170,
                     borderRadius: 10.0,
                   ),
                   const SizedBox(height: 16),

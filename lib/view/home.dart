@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lms_mobile/view/screen/academic/my_home_academic_screen.dart';
+import 'package:lms_mobile/view/screen/lms/auth/first_log_in_screen.dart';
+import 'package:lms_mobile/view/widgets/about_tapbar_navigation_widget.dart';
 import 'package:lms_mobile/view/widgets/appbar_and_bottom_navigation_widgets.dart';
 import 'package:lms_mobile/view/widgets/video_background.dart';
 
@@ -36,15 +39,15 @@ class _HomeScreenState extends State<HomeScreen> {
     },
     {
       'title': 'Academic',
-      'page': Center(child: Text('Academic Page Content')),
+      'page': MyAcademicScreen(),
     },
     {
       'title': 'About',
-      'page': Center(child: Text('About Page Content')),
+      'page': AboutTapbarNavigation(),
     },
     {
       'title': 'LMS',
-      'page': Center(child: Text('LMS Page Content')),
+      'page': firstSignInScreen(),
     },
   ];
 
