@@ -84,7 +84,8 @@ class CommonLayout extends StatelessWidget {
         child: BottomNavigationBar(
           currentIndex: currentIndex,
           onTap: onTabTapped,
-          backgroundColor: Colors.transparent,
+          // backgroundColor: Colors.transparent,
+          backgroundColor: AppColors.primaryColor,
           type: BottomNavigationBarType.fixed,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.white70,
