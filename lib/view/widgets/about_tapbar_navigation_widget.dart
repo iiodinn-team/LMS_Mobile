@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../screen/about/about_my_directorScreen.dart';
-import '../screen/about/about_our_teamScreen.dart';
-import '../screen/about/myHomeAboutIstadScreen.dart';
+import '../screen/about/about_my_director_screen.dart';
+import '../screen/about/about_our_team_screen.dart';
+import '../screen/about/my_home_about_istad_screen.dart';
 
 class AboutTapbarNavigation extends StatefulWidget {
   @override
@@ -15,7 +14,7 @@ class _TabNavigationScreenState extends State<AboutTapbarNavigation> with Single
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this); // 3 tabs in this example
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -31,6 +30,10 @@ class _TabNavigationScreenState extends State<AboutTapbarNavigation> with Single
         children: [
           TabBar(
             controller: _tabController,
+            indicator: null,
+            isScrollable: false,
+            padding: EdgeInsets.zero,
+            // indicator: BoxDecoration(),
             tabs: const [
               Tab(text: 'About ISTAD'),
               Tab(text: 'My Director'),

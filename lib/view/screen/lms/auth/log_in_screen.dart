@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lms_mobile/data/color/color_screen.dart';
 
-import '../../../widgets/color/colorScreen.dart';
 
 void main() {
   runApp(const MaterialApp(
