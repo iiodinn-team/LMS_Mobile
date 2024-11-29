@@ -19,6 +19,7 @@ class AppLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.defaultWhitColor,
       appBar: _buildAppBar(),
       body: body,
       bottomNavigationBar: _buildBottomNavigationBar(),

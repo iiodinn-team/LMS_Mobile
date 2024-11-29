@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lms_mobile/view/home.dart'; // Import HomeScreen
+import 'package:lms_mobile/view/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,9 +8,10 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
+      // home: SplashScreenPage(),
     );
   }
 }
