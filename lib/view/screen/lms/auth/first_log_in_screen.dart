@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lms_mobile/data/color/color_screen.dart';
+import 'package:lms_mobile/view/home.dart';
 
 import '../../../home.dart';
 
@@ -114,7 +115,7 @@ class _SignInScreenState extends State<firstSignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        // backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: AppColors.defaultGrayColor),
