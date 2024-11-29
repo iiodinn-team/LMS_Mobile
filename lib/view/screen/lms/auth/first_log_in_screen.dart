@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lms_mobile/data/color/color_screen.dart';
 
-void main() {
-  runApp(const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: firstSignInScreen()));
-}
+import '../../../home.dart';
+
 
 class firstSignInScreen extends StatefulWidget {
   const firstSignInScreen({Key? key}) : super(key: key);
@@ -121,7 +118,13 @@ class _SignInScreenState extends State<firstSignInScreen> {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: AppColors.defaultGrayColor),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+                  (route) => false,
+            );
+          },
           padding: EdgeInsets.zero,
         ),
         title: const Text(
