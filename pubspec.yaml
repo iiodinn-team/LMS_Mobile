@@ -31,6 +31,10 @@ dependencies:
   flutter:
     sdk: flutter
   video_player: ^2.9.2
+<<<<<<< HEAD
+=======
+  flutter_carousel_widget: ^3.1.0
+>>>>>>> 7b585b840c9d2111210f34fc1b1d903afb023856
   carousel_slider: ^5.0.0
 
 

@@ -1,22 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:lms_mobile/view/screen/about/my_home_about_istad_screen.dart';
+import '../../home.dart';
+import '../../widgets/appbar_and_bottom_navigation_widgets.dart';
+import '../lms/auth/first_log_in_screen.dart';
+import 'my_home_academic_screen.dart';
 
-class ITExpertPage extends StatelessWidget {
+
+class ITExpertPage extends StatefulWidget {
   const ITExpertPage({Key? key}) : super(key: key);
 
   @override
+  _ITExpertPageState createState() => _ITExpertPageState();
+}
+
+class _ITExpertPageState extends State<ITExpertPage> {
+  int currentIndex = 0;
+
+  // List of screens for each tab
+  final List<Widget> screens = [
+    const HomeScreen(),
+    const MyAcademicScreen(),
+    const HomeIstadScreen(),
+    const firstSignInScreen(),
+  ];
+
+  void onTabTapped(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppLayout(
+      title: "Associate",
+      currentIndex: currentIndex,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Image and Scholarship Title Section
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
                 child: Image.asset(
-                  'assets/images/IT_expert_gen2.png', // Replace with your image path
+                  'assets/images/IT_expert_gen2.png',
                   fit: BoxFit.cover,
                   width: double.infinity,
                   height: 200,
@@ -50,8 +79,8 @@ class ITExpertPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Text(
                     "Times: ",
                     style: TextStyle(
@@ -131,6 +160,7 @@ class ITExpertPage extends StatelessWidget {
           ),
         ),
       ),
+      onTabTapped: onTabTapped, // Pass the method to AppLayout
     );
   }
 

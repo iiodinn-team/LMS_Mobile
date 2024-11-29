@@ -107,31 +107,52 @@ class MyAcademicScreen extends StatelessWidget {
                     title: "Bachelor",
                     imagePath: "assets/images/graduate-avatar.png",
                     page: const BachelorPage(),
+                    // currentIndex: 1,
+                    // onTabTapped: (int index) {
+                    //   // Handle tab change
+                    // },
                   ),
                   _HoverCard(
                     title: "Associate",
                     imagePath: 'assets/images/cap.png',
                     page: const AssociatePage(),
+                    // currentIndex: 1, // Set the appropriate index for the navigation bar
+                    // onTabTapped: (int index) {
+                    //   // Handle tab change
+                    // },
                   ),
                   _HoverCard(
                     title: "Short Course",
                     imagePath: 'assets/images/reading.png',
                     page: const ShortCoursePage(),
+                    // currentIndex: 1, // Set the appropriate index for the navigation bar
+                    // onTabTapped: (int index) {
+                    //   // Handle tab change
+                    // },
                   ),
                   _HoverCard(
-                    title: "IT-Expert",
+                    title: "IT Expert",
                     imagePath: 'assets/images/expert-graduate.png',
                     page: const ITExpertPage(),
+
                   ),
                   _HoverCard(
                     title: "Foundation",
                     imagePath: 'assets/images/graduation.png',
                     page: const FoundationPage(),
+                    // currentIndex: 1, // Set the appropriate index for the navigation bar
+                    // onTabTapped: (int index) {
+                    //   // Handle tab change
+                    // },
                   ),
                   _HoverCard(
                     title: "Pre-University",
                     imagePath: 'assets/images/scroll.png',
                     page: const PreUniversityPage(),
+                    // currentIndex: 1, // Set the appropriate index for the navigation bar
+                    // onTabTapped: (int index) {
+                    //   // Handle tab change
+                    // },
                   ),
                 ],
               ),
@@ -147,12 +168,16 @@ class _HoverCard extends StatefulWidget {
   final String title;
   final String imagePath;
   final Widget page;
+  // final int currentIndex;
+  // final ValueChanged<int> onTabTapped;
 
   const _HoverCard({
     Key? key,
     required this.title,
     required this.imagePath,
     required this.page,
+    // required this.currentIndex,
+    // required this.onTabTapped,
   }) : super(key: key);
 
   @override
