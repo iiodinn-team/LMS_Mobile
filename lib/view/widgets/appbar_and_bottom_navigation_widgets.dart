@@ -2,6 +2,25 @@ import 'package:flutter/material.dart';
 
 import '../../data/color/color_screen.dart';
 
+class MyAppLayout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false, // Remove the debug banner
+      title: 'Your App Title',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: AppLayout(
+        title: 'Your App Title',
+        body: Container(), // Your main screen widget here
+        currentIndex: 0,
+        onTabTapped: (int index) {},
+      ),
+    );
+  }
+}
+
 class AppLayout extends StatelessWidget {
   final String title;
   final Widget body;
@@ -19,15 +38,16 @@ class AppLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: currentIndex == 3 ? null : _buildAppBar(), // No AppBar for LMS
+      appBar: currentIndex == 3 ? null : _buildAppBar(),
       body: body,
-      bottomNavigationBar: _buildBottomNavigationBar(),
+      bottomNavigationBar: currentIndex == 3 ? null : _buildBottomNavigationBar(),
     );
   }
 
   AppBar _buildAppBar() {
     return AppBar(
       backgroundColor: AppColors.primaryColor,
+      automaticallyImplyLeading: false,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
